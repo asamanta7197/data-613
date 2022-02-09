@@ -1,0 +1,122 @@
+---
+title: "Classwork 3_Samanta"
+author: "Aritra Samanta"
+date: "1/26/2022"
+output: word_document
+---
+```{r}
+library(tidyverse)
+library(dplyr)
+library(purrr)
+```
+
+
+
+```{r}
+V <- c("Bears", "Lions", "Dolphins", "Eagles", "Bengals")
+```
+1) Why is the vector shown above an atomic vector? (Explain using two 
+or three sentences)
+
+Because it is a vector containing all objects of the same type.In this case, all the objects are character strings.
+
+2) Use and show R code that will extract "Dolphins" from the vector 
+shown above.
+
+```{r}
+V[3]
+```
+3) Use and show Rcode that will extract "Bears" , "Dolphins" and 
+"Bengals" from the vector shown above.
+```{r}
+V[c(1,3,5)]
+```
+4) Use and show two Rcoding methods that will show all objects of
+the vector given above except "Bears".
+```{r}
+V[-1]
+V[c(2:5)]
+```
+```{r}
+K <- list( x = 3:7, "never", 43, y = list(10,20,30))
+```
+
+5) Why is the vector given above called a list? (Explain in two or
+ three sentences) If the vector is a list, identify the type of each object in
+the list.
+
+Because this type of vector has different types of objects as opposed to all of the same kind. We can use str(K) to find the different types of objects in this list, as is done below. As we can see, there is an integer type variable x from 1 to 7; a character never; an integer 43, and a list with three numbers in it, 10, 20 and 30. :
+```{r}
+str(K)
+```
+
+6) Use and show R code that will give the length of the vector shown
+above.
+```{r}
+length(K)
+```
+7) Use and show R code that will output the fourth object in the vector
+shown above.
+
+```{r}
+str(K[[4]])
+```
+8) Use and show R code that will show all objects in the vector (list)
+given above.
+```{r}
+str(K[])
+```
+9) Copy and paste the following tribble
+```{r}
+tribble( ~x,    ~y,    ~w,    ~z,
+              210,   300,   220,   180,
+              102,   100,   119,   187,
+              176,   175,   188,   173,
+              87,    95,   91,     94,
+              202,   210,  234,    218,
+              110,   122,  131,    128,
+) -> dt
+dt
+```
+9a) Use and show a map function to find the mean of each column of
+the dt data table
+```{r}
+map_dbl(dt, mean)
+```
+
+9b) Use and show a map function to find the standard deviation of 
+each column of the dt data table.
+```{r}
+map_dbl(dt, sd)
+```
+9c) Use and show a map function that will calculate the square root
+of each value of each column of the data table dt.
+```{r}
+dt %>%
+  map(~. ^ 0.5)
+```
+
+9d) Use R code to find the mean, max, 1st Quartile, 2nd Quartile,
+Median, and Mean for each column of the dt data table. (Hint: You do
+not have to use a map function)
+```{r}
+summary(dt)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
